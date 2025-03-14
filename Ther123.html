@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบฟอร์มคำติชมลูกค้า</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-container button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+        .confirmation-message {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #4CAF50;
+            border-radius: 5px;
+            background-color: #e8f5e9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>กรุณากรอกคำติชมของคุณ</h2>
+        <form id="feedbackForm">
+            <label for="feedback">คำติชม:</label>
+            <textarea id="feedback" name="feedback" rows="4" required></textarea>
+
+            <button type="submit">ส่งคำติชม</button>
+        </form>
+
+        <div id="confirmationMessage" class="confirmation-message" style="display:none;">
+            <p>คำติชมของคุณได้รับการบันทึกแล้ว!</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get feedback value
+            var feedback = document.getElementById('feedback').value;
+
+            // Save feedback to localStorage (ไม่แสดงออกมาในหน้าเว็บ)
+            localStorage.setItem('feedback', feedback);
+
+            // Show confirmation message
+            document.getElementById('confirmationMessage').style.display = 'block';
+
+            // Clear feedback field
+            document.getElementById('feedback').value = '';
+        });
+    </script>
+
+</body>
+</html>
